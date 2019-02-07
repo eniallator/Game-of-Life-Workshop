@@ -37,8 +37,10 @@ class Game:
 
     def __try_spawn(self, x, y):
         for cell_type in CELL_TYPES:
-            neighbours = self.__get_neighbours(x, y, cell_type.get_radius())
-            cell_type.try_spawn(neighbours)
+            neighbours = self.__get_neighbours(x, y, cell_type.get_neighbour_radius())
+            cell = cell_type.try_spawn(neighbours)
+            if cell is not None:
+                self.__grid[y][x] = cell
 
     def update(self):
         for y, row in enumerate(self.__grid):

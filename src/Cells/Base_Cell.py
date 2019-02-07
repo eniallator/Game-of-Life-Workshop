@@ -1,16 +1,16 @@
 class Base_Cell:
     """The base class for all cell types"""
     __state = 0
-    __radius = 1
+    __neighbour_radius = 1
 
     @classmethod
     def try_spawn(cls, neighbours):
         raise Exception('Error: ' + cls.__name__ + ' implemented a try_spawn method yet.')
 
     @classmethod
-    def get_radius(cls):
+    def get_neighbour_radius(cls):
         """Gets the radius for how many neighbours per cell"""
-        return cls.__radius
+        return cls.__neighbour_radius
 
     @property
     def state(self):
