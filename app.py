@@ -1,7 +1,6 @@
 from src.Game import Game
 
-
-GAME = Game()
+GAME = Game(50, 50)
 
 
 def main():
