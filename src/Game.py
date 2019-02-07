@@ -1,6 +1,7 @@
 from src.Cells.Base_Cell import Base_Cell
+from src.Cells.Gol_Cell import Gol_Cell
 
-CELL_TYPES = []
+CELL_TYPES = [Gol_Cell]
 
 
 class Game:
@@ -9,15 +10,15 @@ class Game:
         self.__height = height
         self.__grid = []
 
-        for j in range(height):
-            row = [None for i in range(width)]
+        for i in range(height):
+            row = [None for j in range(width)]
             self.__grid.append(row)
 
     def __get_neighbours(self, cell_x, cell_y, radius):
         neighbours = []
 
         for y in range(2 * radius + 1):
-            neighbours.append([])
+            neighbours.append([None for i in range(2 * radius + 1)])
             for x in range(2 * radius + 1):
                 grid_y = cell_y - radius + y
                 grid_x = cell_x - radius + x
@@ -46,7 +47,8 @@ class Game:
         for y, row in enumerate(self.__grid):
             for x, cell in enumerate(row):
                 if cell is not None and Base_Cell in cell.__bases__:
-                    cell.update()
+                    neighbours = self.__get_neighbours(x, y, cell.get_neighbour_radius())
+                    cell.update(neighbours)
                 elif cell is None:
                     self.__try_spawn(x, y)
 

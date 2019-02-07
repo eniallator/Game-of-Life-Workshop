@@ -1,7 +1,7 @@
-from Base_Cell import Base_Cell
+from src.Cells.Base_Cell import Base_Cell
 
 
-class Gol_Cell:
+class Gol_Cell(Base_Cell):
     __radius = 1
 
     @classmethod
@@ -9,9 +9,20 @@ class Gol_Cell:
         gol_cell_count = 0
 
         for row in neighbours:
-            for cell in neighbours:
-                if isinstance(cell, Gol_Cell):
+            for cell in row:
+                if cell.__class__ == Gol_Cell:
                     gol_cell_count += 1
 
         if gol_cell_count == 3:
             return Gol_Cell()
+
+    def update(self, neighbours):
+        gol_cell_count = 0
+
+        for row in neighbours:
+            for cell in row:
+                if cell.__class__ == Gol_Cell:
+                    gol_cell_count += 1
+
+        if gol_cell_count < 2 or gol_cell_count > 3:
+            del self
