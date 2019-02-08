@@ -2,7 +2,7 @@ from src.Cells.Base_Cell import Base_Cell
 
 
 class Gol_Cell(Base_Cell):
-    __radius = 1
+    _neighbour_radius = 1
 
     @classmethod
     def try_spawn(cls, neighbours):
@@ -25,4 +25,4 @@ class Gol_Cell(Base_Cell):
                     gol_cell_count += 1
 
         if gol_cell_count < 2 or gol_cell_count > 3:
-            del self
+            self._dead = True
