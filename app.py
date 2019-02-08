@@ -1,6 +1,11 @@
 from src.Game import Game
+from src.Axiom_Parser import Axiom_Parser
 
 GAME = Game(15, 15)
+AXIOMS = Axiom_Parser()
+
+with open('axioms.txt', 'r') as file_handle:
+    AXIOMS.parse(file_handle.read())
 
 from src.Cells.Gol_Cell import Gol_Cell
 GAME.set_sequence([
