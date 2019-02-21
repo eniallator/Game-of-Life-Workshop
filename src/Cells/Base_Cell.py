@@ -16,7 +16,6 @@ class Base_Cell:
         ------
         Exception
             When not overridden, this will raise an error saying to override this method.
-
         """
 
         raise Exception('Error: ' + cls.__name__ + ' implemented a try_spawn method yet.')
@@ -57,7 +56,6 @@ class Base_Cell:
         ------
         Exception
             When not overridden, this will raise an error saying to override this method.
-
         """
 
         raise Exception('Error: ' + self.__class__.__name__ + ' hasn\'t implemented an update method yet.')

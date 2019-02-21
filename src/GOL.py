@@ -4,7 +4,7 @@ from src.Cells.Gol_Cell import Gol_Cell
 CELL_TYPES = [Gol_Cell]
 
 
-class Game:
+class GOL:
     def __init__(self, width, height):
         self.__width = width
         self.__height = height
