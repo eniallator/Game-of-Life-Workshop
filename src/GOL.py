@@ -63,12 +63,16 @@ class GOL:
                         new_grid[y][x] = new_cell
         self.__grid = new_grid
 
-    def draw(self):
-        s = ''
-        for row in self.__grid:
-            s += '\n' if s else ''
-            for cell in row:
-                s += '#' if cell else ' '
-                # if cell is not None and Base_Cell in cell.__bases__:
-                #     cell.draw()
-        print(s)
+    def draw(self, graphics):
+        dim = graphics.get_screen_dimensions()
+        cell_dim = {'x': int(dim['x'] / self.__width), 'y': int(dim['y'] / self.__height)}
+        for y, row in enumerate(self.__grid):
+            for x, cell in enumerate(row):
+                if cell is not None and Base_Cell in cell.__class__.__bases__:
+                    bounding_box = {
+                        'x': x * cell_dim['x'],
+                        'y': y * cell_dim['y'],
+                        'width': cell_dim['x'],
+                        'height': cell_dim['y']
+                    }
+                    cell.draw(graphics, bounding_box)

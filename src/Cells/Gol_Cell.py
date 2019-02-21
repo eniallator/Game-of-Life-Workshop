@@ -26,3 +26,6 @@ class Gol_Cell(Base_Cell):
 
         if gol_cell_count < 2 or gol_cell_count > 3:
             self._dead = True
+
+    def draw(self, graphics, bounding_box):
+        graphics.rect((255, 0, 0), bounding_box)

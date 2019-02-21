@@ -60,6 +60,6 @@ class Base_Cell:
 
         raise Exception('Error: ' + self.__class__.__name__ + ' hasn\'t implemented an update method yet.')
 
-    def draw(self):
+    def draw(self, graphics, bounding_box):
         """The draw method that's called every time the game needs to be rendered. Meant to be overridden."""
         raise Exception('Error: ' + self.__class__.__name__ + ' hasn\'t implemented a draw method yet.')
