@@ -28,4 +28,4 @@ class Gol_Cell(Base_Cell):
             self._dead = True
 
     def draw(self, graphics, bounding_box):
-        graphics.rect((255, 0, 0), bounding_box)
+        graphics.rect((0, 255, 0), bounding_box)
