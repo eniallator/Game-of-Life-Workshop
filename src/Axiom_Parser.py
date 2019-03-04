@@ -1,9 +1,6 @@
 from re import finditer, MULTILINE
 from src.Cells.Gol_Cell import Gol_Cell
-
-CELL_KEYS = {
-    '#': Gol_Cell
-}
+from CellTypes import CELL_TYPES
 
 
 class Axiom_Parser:
@@ -15,8 +12,8 @@ class Axiom_Parser:
         for line_num, line in enumerate(axiom_string.split('\n')):
             axiom_list.append([])
             for char in line:
-                if char in CELL_KEYS:
-                    axiom_list[line_num].append(CELL_KEYS[char]())
+                if char in CELL_TYPES:
+                    axiom_list[line_num].append(CELL_TYPES[char]())
                 else:
                     axiom_list[line_num].append(None)
 
